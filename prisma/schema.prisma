@@ -1,0 +1,70 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model players {
+  id          Int @id @default(autoincrement())
+  name        String
+  age         Int
+  nationality String
+  position    Position
+  photo       String
+
+  transfer    transfers[]
+}
+
+model clubs {
+  id    Int @id @default(autoincrement())
+  name  String  @unique
+  photo String
+
+  from  transfers[]  @relation("from")
+  to    transfers[]  @relation("to")
+}
+
+model transfers {
+  id            Int @id @default(autoincrement())
+  playerId      Int
+  from          Int
+  to            Int
+  status        Status
+  transferDate  DateTime
+
+  player        players @relation(fields: [playerId], references: [id])
+  fromRelation  clubs   @relation("from", fields: [from], references: [id])
+  toRelation    clubs   @relation("to", fields: [to], references: [id])
+
+  likes likes[]
+  @@index([from, to])
+}
+
+model likes {
+  id          Int @id @default(autoincrement())
+  transferId  Int
+  liked       Boolean
+
+  transfer    transfers @relation(fields: [transferId], references: [id])
+}
+
+enum Position {
+  Goleiro
+  Zagueiro
+  LateralDireito
+  LateralEsquero
+  Meia
+  Atacante
+}
+
+enum Status {
+  Fechado
+  Melou
+  Negociando
+}
