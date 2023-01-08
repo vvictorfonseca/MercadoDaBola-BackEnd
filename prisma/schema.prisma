@@ -36,7 +36,7 @@ model transfers {
   from          Int
   to            Int
   status        Status
-  transferDate  DateTime
+  transferDate  DateTime  @db.Date @default(now())  
 
   player        players @relation(fields: [playerId], references: [id])
   fromRelation  clubs   @relation("from", fields: [from], references: [id])

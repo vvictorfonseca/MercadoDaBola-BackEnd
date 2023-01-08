@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "transfers" ALTER COLUMN "transferDate" SET DEFAULT CURRENT_TIMESTAMP,
+ALTER COLUMN "transferDate" SET DATA TYPE DATE;
