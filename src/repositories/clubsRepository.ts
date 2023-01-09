@@ -7,8 +7,27 @@ async function createClub(newClub: CreateClubData) {
   })
 }
 
+async function getClubs(string: string) {
+  const clubs = await prisma.clubs.findMany({
+    where: {
+      name: {
+        startsWith: string,
+        mode: 'insensitive'
+      }
+    },
+    select: {
+      id: true,
+      name: true,
+      photo: true
+    }
+  })
+
+  return clubs
+}
+
 const clubsRepository = {
-  createClub
+  createClub,
+  getClubs
 }
 
 export default clubsRepository

@@ -7,8 +7,13 @@ async function createClub(newClub: CreateClubData) {
   return await clubsRepository.createClub(newClub);
 }
 
+async function getClubs(string: string) {
+  return await clubsRepository.getClubs(string)
+}
+
 const clubsService ={
-  createClub
+  createClub,
+  getClubs
 }
 
 export default clubsService

@@ -9,4 +9,12 @@ async function createClub(req: Request, res: Response) {
   return res.sendStatus(201)
 }
 
-export default createClub
+async function getClubs(req: Request, res: Response) {
+  const string: string = req.params.string
+
+  const clubs = await clubsService.getClubs(string)
+
+  return res.status(200).send(clubs)
+}
+
+export  { createClub, getClubs }

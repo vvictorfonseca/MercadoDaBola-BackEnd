@@ -9,4 +9,12 @@ async function createPlayer(req: Request, res: Response) {
   return res.sendStatus(201)
 }
 
-export default createPlayer
+async function getPlayers(req: Request, res: Response) {
+  const string: string = req.params.string
+
+  const players = await playerService.getPlayers(string)
+
+  return res.status(200).send(players)
+}
+
+export { createPlayer, getPlayers }

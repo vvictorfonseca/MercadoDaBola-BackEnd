@@ -7,12 +7,17 @@ async function createPlayer(newPlayer: CreatePlayerData) {
   return await playerRepository.createPlayer(newPlayer)
 }
 
+async function getPlayers(string: string) {
+  return await playerRepository.getPlayers(string)
+}
+
 async function updatePlayerAge(player: players) {
   return await playerRepository.updatePlayerAge(player)
 }
 
 const playerService = {
   createPlayer,
+  getPlayers,
   updatePlayerAge
 }
 
