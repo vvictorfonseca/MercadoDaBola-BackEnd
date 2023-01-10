@@ -7,6 +7,16 @@ async function createClub(newClub: CreateClubData) {
   })
 }
 
+async function getClubByName(name: string) {
+  const club = await prisma.clubs.findFirst({
+    where: {
+      name
+    }
+  })
+
+  return club
+}
+
 async function getClubs(string: string) {
   const clubs = await prisma.clubs.findMany({
     where: {
@@ -27,6 +37,7 @@ async function getClubs(string: string) {
 
 const clubsRepository = {
   createClub,
+  getClubByName,
   getClubs
 }
 
