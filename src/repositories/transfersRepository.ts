@@ -1,5 +1,5 @@
 import prisma from "../config/database";
-import { transfers, Status } from "@prisma/client";
+import { transfers } from "@prisma/client";
 import { CreateTransferData } from "../services/transfersService";
 
 async function createOrUpdateTransfer(newTransfer: CreateTransferData, updateTransfer: transfers) {
@@ -16,6 +16,30 @@ async function createOrUpdateTransfer(newTransfer: CreateTransferData, updateTra
       data: newTransfer
     })
   }
+}
+
+async function getTransfer(newTransfer: transfers) {
+  let transfer: transfers | null;
+  if (newTransfer.id) {
+    transfer = await prisma.transfers.findFirst({
+      where: {
+        id: newTransfer.id,
+        playerId: newTransfer.playerId,
+        from: newTransfer.from,
+        to: newTransfer.to
+      }
+    })
+  } else {
+    transfer = await prisma.transfers.findFirst({
+      where: {
+        playerId: newTransfer.playerId,
+        from: newTransfer.from,
+        to: newTransfer.to
+      }
+    })
+  }
+
+  return transfer
 }
 
 async function getTransfers() {
@@ -53,6 +77,7 @@ async function getTransfers() {
 
 const transfersRepository = {
   createOrUpdateTransfer,
+  getTransfer,
   getTransfers
 }
 

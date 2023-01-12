@@ -7,10 +7,10 @@ async function createClub(newClub: CreateClubData) {
   })
 }
 
-async function getClubByName(name: string) {
+async function getClubByName(clubName: string) {
   const club = await prisma.clubs.findFirst({
     where: {
-      name
+      name: clubName
     }
   })
 

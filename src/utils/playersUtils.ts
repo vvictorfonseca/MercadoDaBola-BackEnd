@@ -12,7 +12,7 @@ async function validatePlayerExist(newPlayer: CreatePlayerData) {
 }
 
 async function validatePosition(newPlayer: CreatePlayerData) {
-  const positions = ["Goleiro", "Zagueiro", "LateralDireito", "LateralEsquerdo", "Meia", "Atacante"]
+  const positions = ["Goleiro", "Zagueiro", "Volante", "LateralDireito", "LateralEsquerdo", "Meia", "Atacante"]
 
   if (!positions.includes(newPlayer.position)) {
     throw {type: "not_allowed", message: "Insert a valid Position. Goleiro | Zagueiro | LateralDireito | LateralEsquerdo | Meia | Atacante"}

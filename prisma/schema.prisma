@@ -57,6 +57,7 @@ model likes {
 enum Position {
   Goleiro
   Zagueiro
+  Volante
   LateralDireito
   LateralEsquero
   Meia
