@@ -7,6 +7,6 @@ import transferSchema from "../schemas/transfersSchema";
 const transferRouter = Router()
 
 transferRouter.post("/upsert/transfer", validateSchema(transferSchema), createOrUpdateTransfer)
-transferRouter.get("/get/transfers", getTransfersByStatus)
+transferRouter.get("/get/transfers/:status", getTransfersByStatus)
 
 export default transferRouter

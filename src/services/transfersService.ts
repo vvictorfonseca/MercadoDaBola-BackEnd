@@ -11,7 +11,7 @@ async function createOrUpdateTransfer(newTransfer: CreateTransferData, updateTra
   return await transfersRepository.createOrUpdateTransfer(newTransfer, updateTransfer)
 }
 
-async function getTransfersByStatus(status: Status) {
+async function getTransfersByStatus(status: string) {
   const transfers = await transfersRepository.getTransfers()
 
   const transfersByStatus = transfers.filter((transfer) => transfer.status == status)
