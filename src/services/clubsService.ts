@@ -10,12 +10,19 @@ async function createClub(newClub: CreateClubData) {
   return await clubsRepository.createClub(newClub);
 }
 
+async function getClubById(clubId: number) {
+  await clubsUtils.validateClubExistById(clubId)
+
+  return await clubsRepository.getClubById(clubId)
+}
+
 async function getClubs(string: string) {
   return await clubsRepository.getClubs(string)
 }
 
 const clubsService ={
   createClub,
+  getClubById,
   getClubs
 }
 

@@ -16,6 +16,12 @@ async function getPlayers(string: string) {
   return await playerRepository.getPlayers(string)
 }
 
+async function getPlayerById(playerId: number) {
+  await playersUtils.validatePlayerExistById(playerId)
+
+  return await playerRepository.getPlayerById(playerId)
+}
+
 async function updatePlayerAge(player: players) {
   return await playerRepository.updatePlayerAge(player)
 }
@@ -23,6 +29,7 @@ async function updatePlayerAge(player: players) {
 const playerService = {
   createPlayer,
   getPlayers,
+  getPlayerById,
   updatePlayerAge
 }
 

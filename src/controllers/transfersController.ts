@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { transfers, Status } from "@prisma/client";
+import { transfers } from "@prisma/client";
 import transfersService, { CreateTransferData } from "../services/transfersService";
 
 async function createOrUpdateTransfer(req: Request, res: Response) {

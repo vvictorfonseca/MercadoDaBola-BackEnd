@@ -38,6 +38,24 @@ async function getPlayer(player: CreatePlayerData) {
   return playerExist
 }
 
+async function getPlayerById(playerId: number) {
+  const player = await prisma.players.findFirst({
+    where: {
+      id: playerId
+    },
+    select: {
+      id: true,
+      name: true,
+      age: true,
+      nationality: true,
+      position: true,
+      photo: true
+    }
+  })
+
+  return player
+}
+
 async function updatePlayerAge(player: players) {
   return await prisma.players.update({
     where: {
@@ -53,6 +71,7 @@ const playerRepository = {
   createPlayer,
   getPlayers,
   getPlayer,
+  getPlayerById,
   updatePlayerAge
 }
 

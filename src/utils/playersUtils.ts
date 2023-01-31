@@ -30,10 +30,21 @@ async function validateAge(newPlayer: CreatePlayerData) {
   return
 }
 
+async function validatePlayerExistById(playerId: number) {
+  const player = await playerRepository.getPlayerById(playerId)
+
+  if(!player) {
+    throw {type: "not_found", message: "This player doesn't exist"}
+  }
+
+  return 
+}
+
 const playersUtils = {
   validatePlayerExist,
   validatePosition,
-  validateAge
+  validateAge,
+  validatePlayerExistById
 }
 
 export default playersUtils

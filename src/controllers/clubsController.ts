@@ -9,6 +9,14 @@ async function createClub(req: Request, res: Response) {
   return res.sendStatus(201)
 }
 
+async function getClubById(req: Request, res: Response) {
+  const clubId: number = parseInt(req.params.clubId)
+
+  const club = await clubsService.getClubById(clubId)
+
+  return res.status(200).send(club)
+}
+
 async function getClubs(req: Request, res: Response) {
   const string: string = req.params.string
 
@@ -17,4 +25,4 @@ async function getClubs(req: Request, res: Response) {
   return res.status(200).send(clubs)
 }
 
-export  { createClub, getClubs }
+export  { createClub, getClubs, getClubById }

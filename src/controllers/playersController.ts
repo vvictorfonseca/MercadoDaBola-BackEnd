@@ -17,4 +17,12 @@ async function getPlayers(req: Request, res: Response) {
   return res.status(200).send(players)
 }
 
-export { createPlayer, getPlayers }
+async function getPlayerById(req: Request, res: Response) {
+  const playerId: number = parseInt(req.params.playerId)
+
+  const player = await playerService.getPlayerById(playerId)
+
+  return res.status(200).send(player)
+}
+
+export { createPlayer, getPlayers, getPlayerById }

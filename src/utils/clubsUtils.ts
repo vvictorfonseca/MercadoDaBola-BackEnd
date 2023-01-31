@@ -8,8 +8,19 @@ async function validadeClubExist(clubName: string) {
   }
 }
 
+async function validateClubExistById(clubId: number) {
+  const club = await clubsRepository.getClubById(clubId)
+
+  if(!club) {
+    throw {type: "not_found", message: "This club doesn't exist"}
+  }
+
+  return
+}
+
 const clubsUtils = {
-  validadeClubExist
+  validadeClubExist,
+  validateClubExistById
 }
 
 export default clubsUtils
