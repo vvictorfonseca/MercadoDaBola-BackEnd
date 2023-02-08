@@ -71,6 +71,9 @@ async function getTransfers() {
           photo: true
         }
       }
+    },
+    orderBy: {
+      id: 'desc'
     }
   })
 
