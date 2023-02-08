@@ -53,7 +53,9 @@ async function getTransfers() {
         select: {
           id: true,
           name: true,
-          age:true,
+          age: true,
+          position: true,
+          nationality: true,
           photo: true
         }
       },
