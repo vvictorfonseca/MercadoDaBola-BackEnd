@@ -58,8 +58,7 @@ enum Position {
   Goleiro
   Zagueiro
   Volante
-  LateralDireito
-  LateralEsquero
+  Lateral
   Meia
   Atacante
 }
