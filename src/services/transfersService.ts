@@ -19,9 +19,16 @@ async function getTransfersByStatus(status: string) {
   return transfersByStatus
 }
 
+async function getTransferByPlayerId(playerId: number) {
+  const transfer = await transfersRepository.getTransferByPlayerId(playerId)
+
+  return transfer
+}
+
 const transfersService = {
   createOrUpdateTransfer,
-  getTransfersByStatus
+  getTransfersByStatus,
+  getTransferByPlayerId
 }
 
 export default transfersService

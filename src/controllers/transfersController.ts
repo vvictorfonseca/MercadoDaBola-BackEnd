@@ -6,6 +6,8 @@ async function createOrUpdateTransfer(req: Request, res: Response) {
   const newTransfer: CreateTransferData = req.body
   const updateTransfer: transfers = req.body
 
+  console.log(updateTransfer)
+
   await transfersService.createOrUpdateTransfer(newTransfer, updateTransfer)
 
   return res.sendStatus(201)
@@ -19,4 +21,12 @@ async function getTransfersByStatus(req: Request, res: Response) {
   return res.status(200).send(transfers)
 }
 
-export { createOrUpdateTransfer, getTransfersByStatus }
+async function getTransferByPlayerId(req: Request, res: Response) {
+  const playerId: number = parseInt(req.params.playerId)
+
+  const transfer = await transfersService.getTransferByPlayerId(playerId)
+
+  return res.status(200).send(transfer)
+}
+
+export { createOrUpdateTransfer, getTransfersByStatus, getTransferByPlayerId }

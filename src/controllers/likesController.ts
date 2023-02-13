@@ -13,7 +13,6 @@ async function getLikesByTransferId(req: Request, res: Response) {
   const transferId: number = parseInt(req.params.transferId)
 
   const likesResult = await LikesService.getLikesByTransferId(transferId)
-  console.log(likesResult)
 
   return res.status(200).send(likesResult)
 }
