@@ -80,8 +80,8 @@ async function getTransfers() {
   return transfers
 }
 
-async function getTransferByPlayerId(playerId: number) {
-  const transfer = await prisma.transfers.findFirst({
+async function getTransfersByPlayerId(playerId: number) {
+  const transfer = await prisma.transfers.findMany({
     where: {
       playerId
     },
@@ -124,7 +124,7 @@ const transfersRepository = {
   createOrUpdateTransfer,
   getTransfer,
   getTransfers,
-  getTransferByPlayerId
+  getTransfersByPlayerId
 }
 
 export default transfersRepository
