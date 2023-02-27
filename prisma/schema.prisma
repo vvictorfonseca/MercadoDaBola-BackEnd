@@ -54,6 +54,12 @@ model likes {
   transfer    transfers @relation(fields: [transferId], references: [id])
 }
 
+model admin {
+  id        Int @id @default(autoincrement())
+  email     String @unique
+  password  String
+}
+
 enum Position {
   Goleiro
   Zagueiro
