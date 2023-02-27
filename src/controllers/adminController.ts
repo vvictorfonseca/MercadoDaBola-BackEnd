@@ -9,4 +9,12 @@ async function signUpAdmin(req: Request, res: Response) {
   return res.sendStatus(201)
 }
 
-export { signUpAdmin }
+async function signInAdmin(req: Request, res: Response) {
+  const newLogin: CreateAdminData = req.body
+
+  const token = await adminService.signInAdmin(newLogin)
+
+  return res.status(200).send(token)
+}
+
+export { signUpAdmin, signInAdmin }
